@@ -1,0 +1,375 @@
+:root {
+    --tinta: #0f1a20;
+    --tinta-2: #17252d;
+    --tinta-3: #ffffff;
+    --texto-claro: #e8f1f4;
+    --texto-suave: #8fa6b0;
+    --fundo: #0f1a20;
+    /* --fundo: #eef4f6; */
+    --superficie: #0f1a20;
+    /* --superficie: #ffffff; */
+    --borda: #d5e1e6;
+    --acento: #0b7f99;
+    --acento-escuro: #096a80;
+    --texto: #ffffff;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--texto);
+    background: var(--fundo);
+}
+
+/* Estrutura geral */
+
+.app {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    height: 100vh;
+    height: 100dvh;
+}
+
+/* Menu lateral */
+
+.menu {
+    background: var(--tinta);
+    color: var(--texto-claro);
+    border-right: 1px solid #8fa6b0;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+}
+
+.logo span {
+    color: #3cc4e0;
+}
+
+.campoChave {
+    margin-bottom: 16px;
+}
+
+.menu .form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    margin-bottom: 6px;
+}
+
+.menu .form-control {
+    background: var(--tinta-2);
+    border: 1px solid var(--tinta-3);
+    color: var(--texto-claro);
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.menu .form-control::placeholder {
+    color: #8fa6b0;
+}
+
+.menu .form-control:focus {
+    background: var(--tinta-2);
+    color: var(--texto-claro);
+    border-color: #3cc4e0;
+    box-shadow: 0 0 0 3px rgba(60, 196, 224, 0.2);
+}
+
+.btnNova {
+    width: 100%;
+    background: var(--acento);
+    border: 1px solid var(--acento);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 9px 12px;
+    margin-bottom: 24px;
+}
+
+.btnNova:hover,
+.btnNova:focus-visible {
+    background: var(--acento-escuro);
+    border-color: var(--acento-escuro);
+    color: #fff;
+}
+
+.btnNova:disabled {
+    opacity: 0.5;
+}
+
+.tituloLista {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    margin: 0 0 8px 4px;
+}
+
+/* Lista de conversas */
+
+.listaConversas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.conversa {
+    margin-bottom: 4px;
+}
+
+.conversa button {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--texto-claro);
+    font-size: 0.9rem;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background-color 0.15s;
+}
+
+.conversa button:hover {
+    background-color: var(--tinta-2);
+}
+
+.conversa button.ativa {
+    background-color: #1f2327;
+    box-shadow: 1px 0 0 0 #3cc4e0;
+}
+
+/* Área principal */
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+    min-width: 0;
+    padding: 0 24px 20px;
+    position: relative;
+}
+
+/* Largura dos elementos */
+
+.largura {
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Tela inicial */
+
+.inicial {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.inicialConteudo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.areaChat {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.areaChat h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.mensagemInicial,
+.mensagem {
+    background: #2b2f33;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 4px 16px rgba(15, 26, 32, 0.06);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.mensagemInicial:focus-within,
+.mensagem:focus-within {
+    border-color: var(--acento);
+    box-shadow: 0 0 0 3px rgba(11, 127, 153, 0.15);
+}
+
+.mensagemInicial .form-control,
+.mensagem .form-control {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: #ffffff; /* cor do texto digitado */
+}
+
+.mensagemInicial .btn,
+.mensagem .btn {
+    background: var(--acento);
+    border-color: var(--acento);
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 8px 20px;
+}
+
+.mensagemInicial .btn:hover,
+.mensagem .btn:hover {
+    background: var(--acento-escuro);
+    border-color: var(--acento-escuro);
+}
+
+.mensagemInicial .btn:disabled,
+.mensagem .btn:disabled {
+    opacity: 0.5;
+}
+
+.mensagemInicial .form-control::placeholder,
+.mensagem .form-control::placeholder {
+    color: #8fa6b0; /* sua cor aqui */
+}
+
+/* Área de conversa */
+
+.areaConversa {
+    flex: 1;
+    overflow-y: auto;
+    display: none;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 28px 12px 12px 0;
+}
+
+/* Campo inferior */
+
+.mensagem {
+    margin: 8px auto 0;
+}
+
+/* Esconder campo inferior inicialmente */
+
+#mensagemInferior {
+    display: none !important;
+}
+
+/* Balões de mensagem */
+
+.balao {
+    width: fit-content;
+    max-width: 78%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    margin-bottom: 14px;
+    text-align: left;
+    line-height: 1.55;
+    overflow-wrap: break-word;
+}
+
+.usuario {
+    background-color: var(--acento);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 6px;
+    white-space: pre-wrap;
+}
+
+.ia {
+    background-color: var(--superficie);
+    color: var(--texto);
+    /* border: 1px solid var(--borda); */
+    margin-right: auto;
+    border-bottom-left-radius: 6px;
+}
+
+/* Formatação das respostas */
+
+.ia p:last-child,
+.ia ul:last-child,
+.ia ol:last-child {
+    margin-bottom: 0;
+}
+
+.ia pre {
+    background: var(--tinta);
+    color: #f1f7f9;
+    padding: 12px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.ia pre code {
+    color: inherit;
+}
+
+.ia code {
+    overflow-wrap: anywhere;
+}
+
+.ia table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.ia th,
+.ia td {
+    border: 1px solid var(--borda);
+    padding: 6px 10px;
+}
+
+/* Chrome, Edge, Safari */
+.areaConversa::-webkit-scrollbar {
+    width: 8px;
+}
+
+.areaConversa::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.areaConversa::-webkit-scrollbar-thumb {
+    background-color: #b4c6cd;
+    border-radius: 4px;
+}
+
+.areaConversa::-webkit-scrollbar-thumb:hover {
+    background-color: #8fa6b0;
+}
+
+/* Firefox */
+.areaConversa {
+    scrollbar-width: thin;
+    scrollbar-color: #b4c6cd transparent;
+}
+
+/* Foco visível */
+
+.conversa button:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid #3cc4e0;
+    outline-offset: 2px;
+}
